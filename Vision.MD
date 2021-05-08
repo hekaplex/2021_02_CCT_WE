@@ -1,1 +1,1 @@
-To Learn Basic Python Coding
+To learn Basic Python Programming

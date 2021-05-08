@@ -1,0 +1,1 @@
+My vision: to acquire skills to make myself more marketable to potential employers
