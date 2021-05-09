@@ -28,8 +28,9 @@ while a:
     try:
         monthlyInvestment = float(input("Configure Monthly Investment:\t"))
         a = False
-    except ValueError:
-        print("input must be a number, try again")
+    except ValueError as e:
+        #log_exception(e)
+        print("input must be a number, try again. Errmsg: ",e)
         
         
 
