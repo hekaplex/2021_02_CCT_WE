@@ -6,6 +6,7 @@ def calculateFutureValue(monthlyInvestment, monthlyRate, months):
     futureValue = 0.0
     for i in range(months):
 #business logic
+        print("iteration: "+str(i)+" current future value :"+ str(futureValue))
         futureValue = (
                 futureValue
                 + monthlyInvestment
