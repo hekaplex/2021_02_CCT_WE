@@ -1,22 +1,41 @@
-#---importing and defining
+#---importing and defining functions
 import csv
-
 timeLog = "time_log.txt"
 employeeList = "employees.csv"
 
-def READ_EMP():
-    with open(employeeList) as file:
-        for line in file:
-            line = line.replace("\n", "")
-            employees.append(line)
+def read_names():
+    names = []
+    with open(employeeList, "r", newline="") as file:
+        reader = csv.reader(file)
+        for row in reader:
+            names.append(row)
+    return names
 
+def write_log():
+    with open(timeLog, "w", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerow(userName + totalTime + "\n")
+        file.close()
 
-def WRITE_LOG()
+def verify_user(userName):
+    try:
+        with open(employeeList as file)
+            print("Validating user: " + userName)
+            if userName in names
+    except ValueError:
+        print("Employee not found. Please check spelling, or contact lead engineer to be added to employee list.")
+    else:
+        print("User verified.")
+    finally:
+        file.close()
+        print("Validation complete.")
 
 
 #---Identify User
 print("Welcome to the project time-logging system.")
 userName = input("Insert name to begin: ")
+read_names()
+verify_user()
 
 #---Collect data
 print("Enter the amount of time (in minutes) spend working on the project.")
@@ -36,8 +55,7 @@ while True:
     
 
 #---calculate total time and record in log
-
-
+write_log()
 print("Log entry complete. Total time for user \"", userName, "\" spent on project: ", totalTime, " minutes.")
 print()
 print("Your log has been submitted. Thank you for using the log entry system.")
