@@ -7,3 +7,5 @@ x = input('Enter your age:')
 print(x)
 print('Add 10 to your age')
 print("The sum is:",int(x) + 10)
+
+print(Roll the Dice)
