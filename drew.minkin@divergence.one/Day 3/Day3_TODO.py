@@ -23,6 +23,7 @@ Use at least two things you've learned from this list today in any one of these 
 List of what we covered
 •	Decimal
 •	random
+•	math
 •	datetime/date/timedelta
 •	string functions
 •	class constructors
