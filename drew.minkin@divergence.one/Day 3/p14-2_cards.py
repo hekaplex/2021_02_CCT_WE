@@ -3,22 +3,25 @@
 import random
 
 class Card:
-    def __init__(self, rank, suit):
+    def __init__(self, rank, suit, dignified):
         self.rank = rank
         self.suit = suit
-
+        if dignified >= 10:
+            self.dignified = ""
+        else:
+            self.dignified = "*"
     def getStr(self):
-        return self.rank + " of " + self.suit
+        return self.rank + " of " + self.suit + self.dignified
 
 class Deck:
     def __init__(self):
         self.__deck = []
         ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10",
-                 "Jack", "King", "Queen", "Ace"]
-        suits = ["Clubs", "Diamonds", "Hearts", "Spades"]
+                 "Knight", "King", "Queen", "Ace"]
+        suits = ["Wands", "Pentacles", "Cups", "Swords"]
         for rank in ranks:
             for suit in suits:
-                self.__deck.append(Card(rank, suit))
+                self.__deck.append(Card(rank, suit,random.randint(1,100)))
 
     def shuffle(self):
         random.shuffle(self.__deck)
@@ -30,7 +33,7 @@ class Deck:
         return len(self.__deck)
     
 def main():
-    print("Card Dealer")
+    print("Tarot Card Dealer")
     print()
 
     deck = Deck()

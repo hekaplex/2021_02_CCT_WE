@@ -3,19 +3,19 @@ import random
 def main():
     print("Binary Search")
     print()
-
+    intCounter = int(input("Number of random numbers: "))
     print("Enter 'x' to exit")
     print()
 
     numbers = []
-    for i in range(10):
-        numbers.append(random.randint(1, 100))
+    for i in range(intCounter):
+        numbers.append(random.randint(1, 1000))
     numbers.sort()
     print("Random numbers: ", numbers)
     print()
 
     while True:
-        number = input("Enter a number from 1 to 100: ")
+        number = input("Enter a number from 1 to 1000: ")
         if number == 'x':
             print("Bye!")
             break
@@ -30,6 +30,7 @@ def main():
     
 
 def search(numbers, number, start, end):
+    print("evaluating: ",numbers, number, start, end)
     if start == end:
         return False
 

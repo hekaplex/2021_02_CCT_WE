@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 
 class Customer:
+    #constructor - new Class
+    #An instance of a class with data/code execution is an object
+    #a function of an object is a method
+    #data types you set/get are called properties (attributes/members)
+    # the properties of Customer are set once
     def __init__(self, cust_id, 
                  first_name, last_name,
                  company_name, address,
@@ -51,6 +56,7 @@ def get_customers():
                                 row[5].strip(),
                                 row[6].strip(),
                                 row[7].strip())
+        #an iterable mutable list of objects is a collection
             customers.append(customer)
         return customers
 
