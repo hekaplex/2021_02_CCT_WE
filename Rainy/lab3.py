@@ -1,6 +1,7 @@
 #---importing and defining functions
 from datetime import date,time,datetime
 import csv
+from os import write
 timeLog = "time_log.txt"
 employeeList = "employees.csv"
 
@@ -12,7 +13,8 @@ def read_names():
             names.append(row)
     return names
 
-def write_log():
+#  TODO this function needs to have input parameters for userName and totalTime
+def write_log(userName, totalTime):
     with open(timeLog, "w", newline="") as file:
         writer = csv.writer(file)
         writer.writerow(userName + datetime.strftime(datetime.now(),"%Y-%m-%d %H:%M:%S" + totalTime + "\n"))
@@ -20,8 +22,9 @@ def write_log():
     print("Log entry complete. Total time for user \"", userName, "\" spent on project: ", totalTime, " minutes.")
     print()
     print("Your log has been submitted. Thank you for using the log entry system.")
+    quit()
 
-def get_times():
+def get_times(userName):
     print("Enter the amount of time (in minutes) spend working on the project.")
     print("Reminder: if you spend over 60 minutes on the project, it must be reported directly to the lead engineer.")
     timeClock = 0
@@ -36,31 +39,35 @@ def get_times():
             print("Time must be at least one minute. Please re-enter.")
         else:
             print("Please report times of over one hour to lead engineer.")
+    write_log(userName, totalTime)
 
-def verify_user():
+
+def verify_user(userName):
+    names = read_names()
+    print("names:", names)
     try:
         print("Validating user: " + userName)
-        read_names()
-        if userName.lower() in names:
-            pass
+        # TODO your function's result that returns teh list should be assigned to names
+       
+        if userName.lower() in "".join(names):
+            print("User verified.")
+            get_times()
         else:
-            pass
+            print("Employee not found.")
+            print("Please check spelling, or contact lead engineer to be added to employee list.")
+            main()
     except:
-        print("Employee not found.")
-        print("Please check spelling, or contact lead engineer to be added to employee list.")
-        main()
-    else:
-        print("User verified.")
-        get_times()
+        print("An error occured.")
 
 def main():
     print("Welcome to the project time-logging system.")
     print()
     userName = input("Insert name to begin, or type Exit to leave: ")
+
     if userName.lower() == "exit":
         quit()
     else:
-        verify_user()
+        verify_user(userName)
 
 if __name__ == "__main__":
     main()
