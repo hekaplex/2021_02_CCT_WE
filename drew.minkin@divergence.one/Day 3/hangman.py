@@ -10,8 +10,7 @@ words = [
     ]
 
 def get_random_word():
-    word = random.choice(words)
-    return word
+    return words[random.randint(0,len(words))]
 
 #import wordlist
 
