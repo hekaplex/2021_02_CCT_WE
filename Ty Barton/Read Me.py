@@ -1,1 +1,0 @@
-sword, gloves, shield, mask, pants, shoes)
