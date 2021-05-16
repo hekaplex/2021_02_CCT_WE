@@ -57,8 +57,8 @@ def main():
     print("Welcome to the project time-logging system.")
     print()
     userName = input("Insert name to begin, or type Exit to leave: ")
-    if userName.lower() = "exit":
-        break
+    if userName.lower() == "exit":
+        quit()
     else:
         verify_user()
 
