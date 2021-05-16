@@ -13,11 +13,20 @@ def read_names():
             names.append(row)
     return names
 
+def rowset_to_text(names):
+    strg = ""
+    for x in names:
+        #each item is a list
+        for i in x:
+            strg +=i
+            strg += ","
+    return strg    
+
 #  TODO this function needs to have input parameters for userName and totalTime
 def write_log(userName, totalTime):
-    with open(timeLog, "w", newline="") as file:
+    with open(timeLog, "a", newline="") as file:
         writer = csv.writer(file)
-        writer.writerow(userName + datetime.strftime(datetime.now(),"%Y-%m-%d %H:%M:%S" + totalTime + "\n"))
+        writer.writerow([userName,datetime.strftime(datetime.now(),"%Y-%m-%d %H:%M"),totalTime])
         file.close()
     print("Log entry complete. Total time for user \"", userName, "\" spent on project: ", totalTime, " minutes.")
     print()
@@ -30,13 +39,15 @@ def get_times(userName):
     timeClock = 0
     totalTime = 0
     while True:
-        timeClock = int(input("Enter project time (type 1234 to finish):"))
+        timeClock = int(input("Enter project time (type 1234 to finish logging or 6666 to cancel):"))
         if timeClock >0 and timeClock <=60:
             totalTime += timeClock
         elif timeClock == 1234:
-            break
+            write_log(userName,totalTime)
         elif timeClock <=0:
             print("Time must be at least one minute. Please re-enter.")
+        elif timeClock == 6666:
+            break
         else:
             print("Please report times of over one hour to lead engineer.")
     write_log(userName, totalTime)
@@ -49,15 +60,15 @@ def verify_user(userName):
         print("Validating user: " + userName)
         # TODO your function's result that returns teh list should be assigned to names
        
-        if userName.lower() in "".join(names):
+        if userName.lower() in rowset_to_text(names):
             print("User verified.")
-            get_times()
+            get_times(userName)
         else:
             print("Employee not found.")
             print("Please check spelling, or contact lead engineer to be added to employee list.")
             main()
-    except:
-        print("An error occured.")
+    except Exception as e:
+        print("An error occured:", e)
 
 def main():
     print("Welcome to the project time-logging system.")
