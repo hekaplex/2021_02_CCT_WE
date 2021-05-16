@@ -12,6 +12,7 @@ def read_names():
             names.append(row)
     return names
 
+#  TODO this function needs to have input parameters for userName and totalTime
 def write_log():
     with open(timeLog, "w", newline="") as file:
         writer = csv.writer(file)
@@ -37,9 +38,11 @@ def get_times():
         else:
             print("Please report times of over one hour to lead engineer.")
 
+
 def verify_user():
     try:
         print("Validating user: " + userName)
+        # TODO your function's result that returns teh list should be assigned to names
         read_names()
         if userName.lower() in names:
             pass
@@ -57,6 +60,7 @@ def main():
     print("Welcome to the project time-logging system.")
     print()
     userName = input("Insert name to begin, or type Exit to leave: ")
+    # TODO should be == for comparison = is an assignment
     if userName.lower() = "exit":
         break
     else:
