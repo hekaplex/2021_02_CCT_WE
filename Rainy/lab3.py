@@ -39,7 +39,7 @@ def get_times(userName):
     timeClock = 0
     totalTime = 0
     while True:
-        timeClock = int(input("Enter project time (type 1234 to finish logging or 6666 to cancel):"))
+        timeClock = int(input("Enter project time (type 1234 to finish logging, or 6666 to cancel):"))
         if timeClock >0 and timeClock <=60:
             totalTime += timeClock
         elif timeClock == 1234:
@@ -47,11 +47,10 @@ def get_times(userName):
         elif timeClock <=0:
             print("Time must be at least one minute. Please re-enter.")
         elif timeClock == 6666:
+            print("Entry cancelled.")
             break
         else:
             print("Please report times of over one hour to lead engineer.")
-    write_log(userName, totalTime)
-
 
 def verify_user(userName):
     names = read_names()
